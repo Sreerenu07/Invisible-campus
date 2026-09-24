@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVISIBLE CAMPUS - Jaya Engineering College</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-badge">IC</div>
+                <div class="brand-info">
+                    <span class="brand-title">INVISIBLE CAMPUS</span>
+                    <span class="brand-subtitle">Jaya Engineering College</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-section="dashboard" id="nav-dashboard">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+
+                <button class="nav-item" data-section="report" id="nav-report">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                    <span>Report Issue</span>
+                </button>
+
+                <button class="nav-item" data-section="my-reports" id="nav-my-reports">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    <span>My Reports</span>
+                </button>
+
+                <button class="nav-item" data-section="campus-map" id="nav-campus-map">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                    </svg>
+                    <span>Campus Map</span>
+                </button>
+
+                <button class="nav-item" data-section="hotspots" id="nav-hotspots">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                    </svg>
+                    <span>Hotspots</span>
+                </button>
+
+                <button class="nav-item" data-section="maintenance" id="nav-maintenance">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    <span>Maintenance</span>
+                </button>
+            </nav>
+
+            <div class="user-profile">
+                <div class="avatar">R</div>
+                <div class="user-info">
+                    <span class="user-name">Renu</span>
+                    <span class="user-role">Student</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <!-- HEADER -->
+            <header class="top-header">
+                <div class="header-mobile-toggle" id="mobileToggle">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </div>
+                <div class="header-titles">
+                    <span class="institution-name">JAYA ENGINEERING COLLEGE</span>
+                    <h1 class="page-title" id="pageTitle">Campus Infrastructure Intelligence</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="header-user">
+                        <span class="header-user-name">Renu</span>
+                        <span class="header-user-badge">Student</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- TOAST MESSAGES -->
+            <div id="toastContainer" class="toast-container"></div>
+
+            <!-- SECTIONS -->
+
+            <!-- SECTION 1: DASHBOARD -->
+            <section id="section-dashboard" class="content-section active">
+                <div class="welcome-card">
+                    <div class="welcome-text">
+                        <h2 id="greetingText">Good evening, Renu</h2>
+                        <p>Monitor campus issues, identify recurring hotspots, and track maintenance progress.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="navigateToSection('report')">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                        Report an Issue
+                    </button>
+                </div>
+
+                <!-- 4 STATISTICS CARDS -->
+                <div class="stats-grid">
+                    <div class="stat-card stat-total">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">TOTAL REPORTS</span>
+                            <span class="stat-value" id="stat-total">0</span>
+                            <span class="stat-subtext">Logged across campus</span>
+                        </div>
+                        <span class="stat-context-pill pill-lavender">All Time</span>
+                    </div>
+
+                    <div class="stat-card stat-pending">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">PENDING</span>
+                            <span class="stat-value" id="stat-pending">0</span>
+                            <span class="stat-subtext">Awaiting team triage</span>
+                        </div>
+                        <span class="stat-context-pill pill-pink">Needs Action</span>
+                    </div>
+
+                    <div class="stat-card stat-in-progress">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">IN PROGRESS</span>
+                            <span class="stat-value" id="stat-in-progress">0</span>
+                            <span class="stat-subtext">Assigned & active</span>
+                        </div>
+                        <span class="stat-context-pill pill-blue">Active Task</span>
+                    </div>
+
+                    <div class="stat-card stat-resolved">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div class="stat-details">
+                            <span class="stat-label">RESOLVED</span>
+                            <span class="stat-value" id="stat-resolved">0</span>
+                            <span class="stat-subtext">Fixed and verified</span>
+                        </div>
+                        <span class="stat-context-pill pill-sage">Completed</span>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC CAMPUS INTELLIGENCE PANEL -->
+                <div class="intelligence-panel mb-24">
+                    <div class="intelligence-header">
+                        <span class="intelligence-tag">CAMPUS INSIGHT</span>
+                        <span class="intelligence-time" id="intelligenceTime">Live Analysis</span>
+                    </div>
+                    <p class="intelligence-body" id="intelligenceText">
+                        Campus infrastructure monitoring active. Recurring hotspot detection is analyzing campus reports in real time.
+                    </p>
+                </div>
+
+                <!-- DASHBOARD TWO-COLUMN LAYOUT -->
+                <div class="dashboard-grid">
+                    <!-- EMERGING HOTSPOTS CARD -->
+                    <div class="panel-card">
+                        <div class="panel-header">
+                            <div>
+                                <span class="panel-tag">RECURRING DEFECT ANALYSIS</span>
+                                <h3 class="panel-title">Emerging Hotspots</h3>
+                            </div>
+                            <button class="btn-link" onclick="navigateToSection('hotspots')">View All</button>
+                        </div>
+                        <div class="hotspots-list" id="dashboard-hotspots-list">
+                            <!-- Dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <!-- CAMPUS MAP SCHEMATIC PREVIEW -->
+                    <div class="panel-card">
+                        <div class="panel-header">
+                            <div>
+                                <span class="panel-tag">SPATIAL SCHEMATIC</span>
+                                <h3 class="panel-title">Campus Overview Map</h3>
+                            </div>
+                            <button class="btn-link" onclick="navigateToSection('campus-map')">Full Map</button>
+                        </div>
+                        <div id="dash-map-container" class="map-preview-container">
+                            <!-- Render schematic map -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECENT REPORTS TABLE -->
+                <div class="panel-card mt-24">
+                    <div class="panel-header">
+                        <h3 class="panel-title">Recent Infrastructure Reports</h3>
+                        <button class="btn-link" onclick="navigateToSection('my-reports')">View All Reports</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Category</th>
+                                    <th>Location</th>
+                                    <th>Reported Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboard-recent-reports-body">
+                                <!-- Dynamically loaded -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: REPORT ISSUE -->
+            <section id="section-report" class="content-section">
+                <div class="form-container-wide">
+                    <div class="form-header">
+                        <h2>Report Campus Infrastructure Issue</h2>
+                        <p>Submit details regarding an infrastructure defect. Repeated reports from the same location automatically surface as an emerging hotspot.</p>
+                    </div>
+
+                    <form id="reportForm" enctype="multipart/form-data">
+                        <div class="form-two-col">
+                            <!-- LEFT COLUMN: INPUTS -->
+                            <div class="form-col-left">
+                                <div class="form-group">
+                                    <label for="reportCategory">Issue Category <span class="required">*</span></label>
+                                    <select id="reportCategory" name="category" required class="form-control">
+                                        <option value="" disabled selected>Select category...</option>
+                                        <option value="Electrical">Electrical</option>
+                                        <option value="Plumbing">Plumbing</option>
+                                        <option value="Furniture">Furniture</option>
+                                        <option value="Civil / Structural">Civil / Structural</option>
+                                        <option value="Cleanliness">Cleanliness</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reportBuilding">Campus Building <span class="required">*</span></label>
+                                    <select id="reportBuilding" name="building" required class="form-control">
+                                        <option value="" disabled selected>Select building...</option>
+                                        <option value="Main Block">Main Block</option>
+                                        <option value="Library Block">Library Block</option>
+                                        <option value="CSE Block">CSE Block</option>
+                                        <option value="EEE Block">EEE Block</option>
+                                        <option value="ECE Block">ECE Block</option>
+                                        <option value="Civil Block">Civil Block</option>
+                                        <option value="Auditorium">Auditorium</option>
+                                        <option value="Seminar Hall">Seminar Hall</option>
+                                        <option value="Canteen">Canteen</option>
+                                        <option value="Boys Hostel">Boys Hostel</option>
+                                        <option value="Girls Hostel">Girls Hostel</option>
+                                        <option value="Parking Area">Parking Area</option>
+                                        <option value="Aero">Aero</option>
+                                        <option value="Mech">Mech</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reportRoom">Room / Specific Area</label>
+                                    <input type="text" id="reportRoom" name="room" class="form-control" placeholder="e.g. Room 204, Second Floor, West Wing">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reportDescription">Detailed Description <span class="required">*</span></label>
+                                    <textarea id="reportDescription" name="description" rows="4" required class="form-control" placeholder="Describe the issue clearly..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- RIGHT COLUMN: IMAGE & AI SUGGESTION -->
+                            <div class="form-col-right">
+                                <label>Photo Evidence (Optional)</label>
+                                <div class="file-upload-box" id="fileUploadBox">
+                                    <input type="file" id="reportImage" name="image" accept="image/*" class="file-input">
+                                    <div class="file-upload-content" id="fileUploadContent">
+                                        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                        <span>Drag and drop photo here or click to browse</span>
+                                        <small>Supports PNG, JPG, WEBP (Max 16 MB)</small>
+                                    </div>
+                                    <div id="imagePreviewContainer" class="image-preview-container hidden">
+                                        <img id="imagePreview" src="" alt="Issue Preview">
+                                        <div class="file-details-row">
+                                            <span id="fileNameText" class="file-name-text">filename.jpg</span>
+                                            <button type="button" class="btn-remove-img" id="removeImgBtn">Remove Photo</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Computer Vision Suggestion Badge -->
+                                <div id="cvSuggestionBox" class="cv-suggestion-box hidden">
+                                    <div class="cv-header">
+                                        <span class="cv-badge">OpenCV Category Assistant</span>
+                                    </div>
+                                    <p id="cvSuggestionText">Analyzing image colors & texture...</p>
+                                    <button type="button" id="applyCvSuggestionBtn" class="btn-apply-suggestion">Apply Suggested Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions mt-24">
+                            <button type="submit" class="btn btn-primary btn-large" id="submitReportBtn">
+                                <span>Submit Infrastructure Report</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SECTION 3: MY REPORTS -->
+            <section id="section-my-reports" class="content-section">
+                <div class="section-header">
+                    <h2>My Reports</h2>
+                    <p>Track all submitted infrastructure complaints and monitoring status.</p>
+                </div>
+
+                <!-- CONTROLS: SEARCH & STATUS FILTER -->
+                <div class="reports-filter-bar mb-24">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="reportSearchInput" placeholder="Search by building, category, or report ID..." class="search-input">
+                    </div>
+                    <div class="filter-pills">
+                        <button class="filter-pill active" data-filter="all">All</button>
+                        <button class="filter-pill" data-filter="Pending">Pending</button>
+                        <button class="filter-pill" data-filter="In Progress">In Progress</button>
+                        <button class="filter-pill" data-filter="Resolved">Resolved</button>
+                    </div>
+                </div>
+
+                <div id="my-reports-list" class="reports-cards-container">
+                    <!-- Loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- SECTION 4: CAMPUS MAP -->
+            <section id="section-campus-map" class="content-section">
+                <div class="section-header">
+                    <h2>Interactive Campus Schematic</h2>
+                    <p>Click any building node to inspect infrastructure report logs and emerging hotspot indicators.</p>
+                </div>
+
+                <div class="map-card-wrapper">
+                    <div class="map-legend">
+                        <div class="legend-item"><span class="legend-dot dot-normal"></span> Normal Building (0-1 Reports)</div>
+                        <div class="legend-item"><span class="legend-dot dot-hotspot"></span> Emerging Hotspot (≥ 2 Reports)</div>
+                    </div>
+
+                    <div class="campus-map-interactive" id="main-campus-map">
+                        <!-- Custom schematic layout rendered dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: HOTSPOTS -->
+            <section id="section-hotspots" class="content-section">
+                <div class="section-header">
+                    <span class="panel-tag">INFRASTRUCTURE INTELLIGENCE</span>
+                    <h2>Recurring Infrastructure Hotspots</h2>
+                    <p>Locations with repeated reports are surfaced automatically so maintenance teams can prioritize recurring issues.</p>
+                </div>
+
+                <div class="hotspots-grid" id="full-hotspots-container">
+                    <!-- Loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- SECTION 6: MAINTENANCE -->
+            <section id="section-maintenance" class="content-section">
+                <div class="section-header">
+                    <h2>Maintenance Operations Board</h2>
+                    <p>Track, assign, and resolve campus infrastructure issues across operational triage stages.</p>
+                </div>
+
+                <!-- 3-COLUMN KANBAN BOARD -->
+                <div class="kanban-board">
+                    <!-- COLUMN 1: PENDING -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header column-pending">
+                            <h3>Pending Tasks</h3>
+                            <span class="kanban-count-badge" id="kanban-count-pending">0</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="kanban-pending-list">
+                            <!-- Cards -->
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 2: IN PROGRESS -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header column-in-progress">
+                            <h3>In Progress</h3>
+                            <span class="kanban-count-badge" id="kanban-count-in-progress">0</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="kanban-in-progress-list">
+                            <!-- Cards -->
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 3: RESOLVED -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header column-resolved">
+                            <h3>Resolved</h3>
+                            <span class="kanban-count-badge" id="kanban-count-resolved">0</span>
+                        </div>
+                        <div class="kanban-cards-wrapper" id="kanban-resolved-list">
+                            <!-- Cards -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- BUILDING DETAILS MODAL -->
+    <div id="buildingModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div>
+                    <h3 id="modalBuildingName">Building Details</h3>
+                    <span id="modalHotspotBadge" class="hotspot-badge hidden">Emerging Hotspot</span>
+                </div>
+                <button class="modal-close" onclick="closeBuildingModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-stats-grid">
+                    <div class="modal-stat-box">
+                        <span class="m-label">Total Reports</span>
+                        <strong id="modalReportCount">0</strong>
+                    </div>
+                    <div class="modal-stat-box">
+                        <span class="m-label">Pending</span>
+                        <strong id="modalPendingCount" style="color: var(--dusty-pink-dark);">0</strong>
+                    </div>
+                    <div class="modal-stat-box">
+                        <span class="m-label">In Progress</span>
+                        <strong id="modalInProgressCount" style="color: var(--powder-blue-dark);">0</strong>
+                    </div>
+                    <div class="modal-stat-box">
+                        <span class="m-label">Resolved</span>
+                        <strong id="modalResolvedCount" style="color: var(--sage-dark);">0</strong>
+                    </div>
+                </div>
+
+                <div class="modal-category-row mt-12">
+                    <span>Dominant Category:</span>
+                    <strong id="modalDominantCat">None</strong>
+                </div>
+
+                <h4 class="mt-16 mb-8">Recent Issue Logs</h4>
+                <div id="modalReportsList" class="modal-reports-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP SCRIPT -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
