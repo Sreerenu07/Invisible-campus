@@ -317,7 +317,11 @@ def init_db():
     with app.app_context():
         db.create_all()
 
+# Auto-initialize database tables on startup
+init_db()
+
 if __name__ == '__main__':
-    init_db()
-    print("Invisible Campus server running at http://127.0.0.1:5000")
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    print(f"Invisible Campus server running on port {port}")
+    app.run(host='0.0.0.0', port=port, debug=True)
+
